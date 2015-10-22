@@ -31,7 +31,7 @@ else:
     statuscode = 0
  
 
-url = 'http://gl-zabbix1.glidewelllab.local/api_jsonrpc.php'
+url = 'http://zabbixserver.com/api_jsonrpc.php'
 headers = {'content-type': 'application/json'}
 
 def get_auth_key():
