@@ -31,7 +31,7 @@ else:
     statuscode = 0
  
 
-url = 'http://zabbixserver.com/api_jsonrpc.php'
+url = 'http://gl-zabbix1.glidewelllab.local/api_jsonrpc.php'
 headers = {'content-type': 'application/json'}
 
 def get_auth_key():
@@ -71,10 +71,14 @@ def get_host_id (auth_key):
 		host_id=result[0] ['hostid']
 		return host_id
 	except:
-		result=res.json()['error']
-		print 'error'
-		print result
-		sys.exit()
+		print 'error -get_host_id'
+		result=res.json()['result']
+		if result():
+		   print (zabbixhost + " doesn't exists.")
+		   sys.exit()
+		else:
+		   result=res.json()['error']
+		   sys.exit()
 
 def enable_disable_host (host_id, auth_key):
     payload={
